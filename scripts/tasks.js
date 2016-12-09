@@ -119,14 +119,20 @@ function makeItClean(allTotal) {
 
 	for (var i = 0; i < allTotal.length; i++) {
 		for (var j = 0; j < allTotal[i].length; j++) {
-			array[array.length] = allTotal[i][j];
+			var unique=true;
+			for (var u=0;u<array.length;u++){
+					if (allTotal[i][j]==array[u]) unique=false;
+			}
+			if (unique==true) array[array.length] = allTotal[i][j];
+
 		}
-		array = array.filter(function(item, pos) {
-			return array.indexOf(item) == pos;
-	})
+	// 	array = array.filter(function(item, pos) {
+	// 		return array.indexOf(item) == pos;
+	// })
 	}
 
 
 	return array;
+
 }
 console.log(makeItClean(totalMessArray)); // --> ['a', 'aa', 1, undefined, true];
